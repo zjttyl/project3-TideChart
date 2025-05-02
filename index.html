@@ -60,11 +60,6 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        #date-input {
-            padding: 8px;
-            font-size: 16px;
-            margin-right: 10px;
-        }
         #submit-btn {
             padding: 8px 16px;
             font-size: 16px;
@@ -113,8 +108,7 @@
 <body>
     <h1>Seattle Tide Chart</h1>
     <div id="date-form">
-        <input type="date" id="date-input" required>
-        <button id="submit-btn" onclick="fetchTideData()">Get Tides</button>
+        <button id="submit-btn" onclick="fetchTideData()">Get Tides for Today</button>
     </div>
     <div id="error-message"></div>
     <table id="tide-table">
@@ -135,20 +129,12 @@
         let chartInstance = null;
 
         function fetchTideData() {
-            const dateInput = document.getElementById('date-input').value;
-            if (!dateInput) {
-                showError('Please select a date.');
-                return;
-            }
-
-            // Format date as YYYYMMDD for NOAA API
-            const date = dateInput.replace(/-/g, '');
             const station = '9447130'; // Seattle, WA
             const baseUrl = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter';
 
-            // API URLs for high/low and hourly data with timeZone
-            const hiloUrl = `${baseUrl}?date=${date}&station=${station}&product=predictions&datum=MLLW&interval=hilo&units=metric&time_zone=lst_ldt&format=json`;
-            const hourlyUrl = `${baseUrl}?date=${date}&station=${station}&product=predictions&datum=MLLW&interval=h&units=metric&time_zone=lst_ldt&format=json`;
+            // API URLs for high/low and hourly data with date=today
+            const hiloUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=hilo&units=metric&time_zone=lst_ldt&format=json`;
+            const hourlyUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=h&units=metric&time_zone=lst_ldt&format=json`;
 
             // Clear previous data
             document.getElementById('tide-table-body').innerHTML = '';
