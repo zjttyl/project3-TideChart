@@ -19,3 +19,6 @@ python -m http.server
 ```
 
 3. Open a browser and navigate to http://localhost:8000.
+
+## Resources
+- [Git Guide for Team GYYKS](docs/git-guide.md)
