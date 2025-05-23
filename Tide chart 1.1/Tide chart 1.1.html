@@ -185,10 +185,11 @@
     <label for="location1">Pick Your Area:</label>
     <select id="location1" name="location">
       <option value="Seattle">Seattle</option>
-      <option value="Port Townsend">Port Townsend</option>
-      <option value="Tacoma">Tacoma</option>
-      <option value="Friday Harbor">Friday Harbor</option>
-      <option value="Bremerton">Bremerton</option>
+      <option value="Los Angeles">Los Angeles</option>
+      <option value="Anchorage">Anchorage</option>
+      <option value="New York">New York</option>
+      <option value="Miami">Miami</option>
+      <option calue="Bremerton">Bremerton</option>
     </select>
       </div>
 
@@ -300,10 +301,11 @@ function fetchTideData2() {
 
             const stationMap = {
             "Seattle": "9447130",
-            "Port Townsend": "9444900",
-            "Tacoma": "9446484",
-            "Friday Harbor": "9449880",
-            "Bremerton": "9445958"
+            "Los Angeles": "9410660",
+            "Anchorage": "9455920",
+            "New York": "8518750",
+            "Bremerton": "9445958",
+            "Miami": "8723170",
              };
 
             const station = stationMap[selectedLocation];   //location from location1
