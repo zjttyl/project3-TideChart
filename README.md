@@ -1,21 +1,32 @@
 # HTML Tide Chart
 
-## MVP
+## Introduction
 Display tide predictions for Seattle, WA (Puget Sound, NOAA station 9447130). The Minimum Viable Product (MVP) fetches tide data from NOAA’s CO-OPS API and presents it in a table (high/low tides) and a graph (hourly tide heights) for the current date.
 
 ### Fixed Scope
 - Currently supports only Seattle tides for today’s date (custom date input deferred to prototype due to API issues).
 
-## How To Run
-1. Clone repository:
-```
-git clone https://github.com/zjttyl/project3-TideChart.git
-cd project3-TideChart
-```
+## Prototype Release
+- **Version**: v0.1.0-prototype
+- **Release**: [GitHub Release](https://github.com/zjttyl/project3-TideChart/releases/tag/v0.1.0-prototype)
+- **Run Instructions**:
+1. Clone: `git clone https://github.com/zjttyl/project3-TideChart.git`
+2. Checkout prototype: `git checkout prototype`
+3. Navigate: `cd project3-TideChart`
+4. Start server: `python3 -m http.server`
+5. Open: `http://localhost:8000`
+- **UI and Functionality**:
+  - Table: High/low tide predictions for Seattle (NOAA station 9447130, today's date)
+  - Graph: Hourly tide heights.
+  - Basic UI: Navigation to view tides.
+- **P0 Requirements Met**:
+  - Display daily tide predictions in a table.
+  - Visualize tide data in a graph.
 
-2. Start a local server
-```
-python -m http.server
-```
+## Resources
+- [Git Guide for Team GYYKS](docs/git-guide.md)
 
-3. Open a browser and navigate to http://localhost:8000.
+## Version Control
+- Use branches for versions (e.g., `prototype`, `v1.1`) instead of duplicate files.
+- See [Git Guide](docs/git-guide.md) for instructions.
+
