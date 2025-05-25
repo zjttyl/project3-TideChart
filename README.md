@@ -25,4 +25,5 @@ python -m http.server
 
 ## Version Control
 - Use branches for versions (e.g., `prototype`, `v1.1`) instead of duplicate files.
+- Main branch is protected; use freature branches and PRs for changes.
 - See [Git Guide](docs/git-guide.md) for instructions.
