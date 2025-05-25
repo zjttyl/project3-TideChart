@@ -22,3 +22,7 @@ python -m http.server
 
 ## Resources
 - [Git Guide for Team GYYKS](docs/git-guide.md)
+
+## Version Control
+- Use branches for versions (e.g., `prototype`, `v1.1`) instead of duplicate files.
+- See [Git Guide](docs/git-guide.md) for instructions.
