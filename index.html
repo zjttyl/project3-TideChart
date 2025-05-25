@@ -42,9 +42,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seattle Tide Chart</title>
+    <title>United States Tide Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <style>
+        .header-bg {
+      background-image: url('image/background.jpg'); /*image pass*/
+      background-size: cover; 
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;     /* control distance of left and right */
+      height: 200px;   /* control distance of up and down */
+      display: flex;   /* h1 in the middle*/
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-bg h1 {
+      color: white;     /* background color of h1 */
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .right-img {
+      float: right;
+      margin-left: 20px;
+      margin-bottom: 10px;
+     }
+
         body {
             font-family: Arial, sans-serif;
             max-width: 800px;
@@ -97,20 +124,87 @@
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        #intro-container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
         #error-message {
             color: red;
             text-align: center;
             display: none;
             margin-bottom: 20px;
         }
+
+        p {
+        text-align: center;
+        color: rgb(251, 251, 251);
+        }
+
+        #location1{
+         color: blue;
+        }
+
+        #date1{
+            color: red;
+        }
+
+       #intro h1 {
+         color: #00557f;
+         text-align: left;
+         margin-left: 20px;
+       }
+
+       #intro p{
+        color:#000;
+        text-align: left;
+        margin-left: 20px;
+       }
+
+       
+            
+
     </style>
 </head>
 <body>
-    <h1>Seattle Tide Chart</h1>
-    <div id="date-form">
-        <button id="submit-btn" onclick="fetchTideData()">Get Tides for Today</button>
+    <div class="header-bg">
+    <h1>United States Tide Chart</h1>
+    <p>Created by GYYKS</p>
     </div>
+    
+    <br><br>
+
+    <div id="date-form">
+        <button id="submit-btn" onclick="fetchTideData2()">Get Tides for Today</button>
+    </div>
+    <div style="display: flex; gap: 350px; align-items: center;">
+       <div>
+    <label for="location1">Pick Your Area:</label>
+    <select id="location1" name="location">
+      <option value="Seattle">Seattle</option>
+      <option value="Los Angeles">Los Angeles</option>
+      <option value="Anchorage">Anchorage</option>
+      <option value="New York">New York</option>
+      <option value="Miami">Miami</option>
+      <option calue="Bremerton">Bremerton</option>
+    </select>
+      </div>
+
+      <div>
+    <label for="date">Pick Your date:</label>
+    <select id="date1" name="date">
+      <option value="today">Today</option>
+      <option value="last">Last 7 days</option>
+      <option value="next">Next 7 days</option>
+    </select>
+      </div>
+    </div>
+
     <div id="error-message"></div>
+    <br><br>
     <table id="tide-table">
         <thead>
             <tr>
@@ -125,8 +219,41 @@
         <canvas id="tide-chart"></canvas>
     </div>
 
+    <br><br><br>
+
+    <div id = "intro">
+        <h1>What is tide?</h1>
+
+        <img src="image/tide1.gif" alt="tideImage" width="300" class="right-img">
+
+
+        <p>Tides are one of the most reliable phenomena<br> 
+           in the world. As the sun rises in the east and <br> 
+           it sets on the west coast, we are confident <br> 
+           that the ocean waters will regularly rise and <br> 
+           fall along the shores. Tides are very <br> 
+           long-period waves that move through the ocean <br> 
+           in response to the forces exerted by the moon <br> 
+           and sun. Tides originate all over the ocean and <br> 
+           progress toward the coastlines where they appear <br> 
+           as the regular rise and fall of the sea surface.<br> 
+           When the highest part, or crest, of the wave <br> 
+           reaches a particular location, high tide occurs; <br> 
+           low tide corresponds to the lowest part of the <br> 
+           wave, or its trough. The difference in height <br> 
+           between the high tide and the low tide is called <br> 
+           the tidal range.</p>
+
+           </div>
+    </div>
+
+
     <script>
         let chartInstance = null;
+
+        window.onload = function () {
+        fetchTideData();
+        };
 
         function fetchTideData() {
             const station = '9447130'; // Seattle, WA
@@ -167,6 +294,60 @@
                 })
                 .catch(error => showError('Error fetching hourly tide data: ' + error.message));
         }
+
+
+function fetchTideData2() {
+            const selectedLocation = document.getElementById('location1').value;
+
+            const stationMap = {
+            "Seattle": "9447130",
+            "Los Angeles": "9410660",
+            "Anchorage": "9455920",
+            "New York": "8518750",
+            "Bremerton": "9445958",
+            "Miami": "8723170",
+             };
+
+            const station = stationMap[selectedLocation];   //location from location1
+            const baseUrl = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter';
+
+            // API URLs for high/low and hourly data with date=today
+            const hiloUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=hilo&units=metric&time_zone=lst_ldt&format=json`;
+            const hourlyUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=h&units=metric&time_zone=lst_ldt&format=json`;
+
+            // Clear previous data
+            document.getElementById('tide-table-body').innerHTML = '';
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+            document.getElementById('error-message').style.display = 'none';
+
+            // Fetch high/low tide data for table
+            fetch(hiloUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        showError(data.error.message);
+                        return;
+                    }
+                    populateTable(data.predictions);
+                })
+                .catch(error => showError('Error fetching high/low tide data: ' + error.message));
+
+            // Fetch hourly tide data for graph
+            fetch(hourlyUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        showError(data.error.message);
+                        return;
+                    }
+                    drawChart(data.predictions);
+                })
+                .catch(error => showError('Error fetching hourly tide data: ' + error.message));
+        }
+
+
 
         function populateTable(predictions) {
             const tbody = document.getElementById('tide-table-body');
