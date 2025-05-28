@@ -170,135 +170,167 @@
     </style>
 </head>
 <body>
-    <div class="header-bg">
-    <h1>United States Tide Chart</h1>
-    <p>Created by GYYKS</p>
-    </div>
-    
-    <br><br>
+    <div class="container">
+        <div class="header-bg">
+        <h1>United States Tide Chart</h1>
+        <p>Created by GYYKS</p>
+        </div>
 
-    <div id="date-form">
-        <button id="submit-btn" onclick="fetchTideData2()">Get Tides for Today</button>
-    </div>
-    <div style="display: flex; gap: 350px; align-items: center;">
-       <div>
-    <label for="location1">Pick Your Area:</label>
-    <select id="location1" name="location">
-      <option value="Seattle">Seattle</option>
-      <option value="Los Angeles">Los Angeles</option>
-      <option value="Anchorage">Anchorage</option>
-      <option value="New York">New York</option>
-      <option value="Miami">Miami</option>
-      <option calue="Bremerton">Bremerton</option>
-    </select>
-      </div>
+        <br><br>
 
-      <div>
-    <label for="date">Pick Your date:</label>
-    <select id="date1" name="date">
-      <option value="today">Today</option>
-      <option value="last">Last 7 days</option>
-      <option value="next">Next 7 days</option>
-    </select>
-      </div>
-    </div>
+        <div class="controls">
+            <div>
+                <div class="preset-buttons">
+                    <button onclick="setToday()">Today</button>
+                    <button onclick="setPastWeek()">Past Week</button>
+                    <button onclick="setNextWeek()">Next Week</button>
+                    <button onclick="setPastMonth()">Past Month</button>
+                    <button onclick="setNextMonth()">Next Month</button>
+                </div>
+                <div class="date-picker">
+                    <label for="startDate">Start Date: </label>
+                    <input type="date" id="startDate">
+                    <label for="endDate">End Date: </label>
+                    <input type="date" id="endDate">
+                </div>
+            </div>
+            <div>
+                <label for="location">Pick Your Area:</label>
+                <select id="location">
+                    <option value="Seattle">Seattle</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Anchorage">Anchorage</option>
+                    <option value="New York">New York</option>
+                    <option value="Miami">Miami</option>
+                    <option calue="Bremerton">Bremerton</option>
+                </select>
+            </div>
+        </div>
 
-    <div id="error-message"></div>
-    <br><br>
-    <table id="tide-table">
-        <thead>
-            <tr>
-                <th>Time</th>
-                <th>Height (m)</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody id="tide-table-body"></tbody>
-    </table>
-    <div id="chart-container">
-        <canvas id="tide-chart"></canvas>
-    </div>
+        <div id="date-form">
+            <button id="submit-btn" onclick="fetchTides()">Get Tides</button>
+        </div>
 
-    <br><br><br>
+        <div id="error-message"></div>
+        <br><br>
 
-    <div id = "intro">
-        <h1>What is tide</h1>
+        <div id="chart-container">
+            <canvas id="tide-chart"></canvas>
+        </div>
 
-        <img src="image/tide1.gif" alt="tideImage" width="300" class="right-img">
+        <table id="tide-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Height (m)</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="tide-table-body"></tbody>
+        </table>
+
+        <br><br><br>
+
+        <div id = "intro">
+            <h1>What is tide</h1>
+
+            <img src="image/tide1.gif" alt="tideImage" width="300" class="right-img">
 
 
-        <p>Tides are one of the most reliable phenomena<br> 
-           in the world. As the sun risesin the east and <br> 
-           the stars come out at night, we are confident <br> 
-           that the ocean waters will regularly rise and <br> 
-           fall along our shores.Tides are very <br> 
-           long-period waves that move through the ocean <br> 
-           in response to the forces exerted by the moon <br> 
-           and sun. Tides originate in the ocean and <br> 
-           progress toward the coastlines where they appear <br> 
-           as the regular rise and fall of the sea surface.<br> 
-           When the highest part, or crest, of the wave <br> 
-           reaches a particular location, high tide occurs; <br> 
-           low tide corresponds to the lowest part of the <br> 
-           wave, or its trough. The difference in height <br> 
-           between the high tide and the low tide is called <br> 
-           the tidal range.</p>
+            <p>Tides are one of the most reliable phenomena<br> 
+            in the world. As the sun risesin the east and <br> 
+            the stars come out at night, we are confident <br> 
+            that the ocean waters will regularly rise and <br> 
+            fall along our shores.Tides are very <br> 
+            long-period waves that move through the ocean <br> 
+            in response to the forces exerted by the moon <br> 
+            and sun. Tides originate in the ocean and <br> 
+            progress toward the coastlines where they appear <br> 
+            as the regular rise and fall of the sea surface.<br> 
+            When the highest part, or crest, of the wave <br> 
+            reaches a particular location, high tide occurs; <br> 
+            low tide corresponds to the lowest part of the <br> 
+            wave, or its trough. The difference in height <br> 
+            between the high tide and the low tide is called <br> 
+            the tidal range.</p>
 
-           </div>
+            </div>
+        </div>
     </div>
 
 
     <script>
+        // transmit to NOAA api date format, YYYYMMDD
+        function formatDateToNOAA(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
+        }
+
+        // default dates to today
+        const today = new Date()
+        document.getElementById('startDate').value = today.toISOString().split('T')[0];;
+        document.getElementById('endDate').value = today.toISOString().split('T')[0];;
+
+        function setToday() {
+            const todayStr = today.toISOString().split('T')[0];
+            document.getElementById('startDate').value = todayStr;
+            document.getElementById('endDate').value = todayStr;
+            //fetchTides();
+        }
+
+        function setPastWeek() {
+            const start = new Date(today);
+            start.setDate(today.getDate() - 7);
+            document.getElementById('startDate').value = start.toISOString().split('T')[0];
+            document.getElementById('endDate').value = today.toISOString().split('T')[0];
+            //fetchTides();
+        }
+
+        function setNextWeek() {
+            const end = new Date(today);
+            end.setDate(today.getDate() + 7);
+            document.getElementById('startDate').value = today.toISOString().split('T')[0];
+            document.getElementById('endDate').value = end.toISOString().split('T')[0];
+            //fetchTides();
+        }
+
+        function setPastMonth() {
+            const start = new Date(today);
+            start.setMonth(start.getMonth() - 1);
+            document.getElementById('startDate').value = start.toISOString().split('T')[0];
+            document.getElementById('endDate').value = today.toISOString().split('T')[0];
+            //fetchTides();
+        }
+
+        function setNextMonth() {
+            const end = new Date(today);
+            end.setMonth(end.getMonth() + 1);
+            document.getElementById('startDate').value = today.toISOString().split('T')[0];
+            document.getElementById('endDate').value = end.toISOString().split('T')[0];
+            //fetchTides();
+        }
+
+        // validate date range
+        document.getElementById('endDate').addEventListener('change', function() {
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(this.value);
+            if (endDate < startDate) {
+                alert('End date cannot be before start date.');
+                this.value = document.getElementById('startDate').value;
+            }
+        });
+
         let chartInstance = null;
 
         window.onload = function () {
-        fetchTideData();
+            fetchTides();
         };
 
-        function fetchTideData() {
-            const station = '9447130'; // Seattle, WA
-            const baseUrl = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter';
-
-            // API URLs for high/low and hourly data with date=today
-            const hiloUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=hilo&units=metric&time_zone=lst_ldt&format=json`;
-            const hourlyUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=h&units=metric&time_zone=lst_ldt&format=json`;
-
-            // Clear previous data
-            document.getElementById('tide-table-body').innerHTML = '';
-            if (chartInstance) {
-                chartInstance.destroy();
-            }
-            document.getElementById('error-message').style.display = 'none';
-
-            // Fetch high/low tide data for table
-            fetch(hiloUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        showError(data.error.message);
-                        return;
-                    }
-                    populateTable(data.predictions);
-                })
-                .catch(error => showError('Error fetching high/low tide data: ' + error.message));
-
-            // Fetch hourly tide data for graph
-            fetch(hourlyUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        showError(data.error.message);
-                        return;
-                    }
-                    drawChart(data.predictions);
-                })
-                .catch(error => showError('Error fetching hourly tide data: ' + error.message));
-        }
-
-
-function fetchTideData2() {
-            const selectedLocation = document.getElementById('location1').value;
-
+        // NOAA API fetch function
+        async function fetchTides() {
+            const selectedLocation = document.getElementById('location').value;
             const stationMap = {
             "Seattle": "9447130",
             "Los Angeles": "9410660",
@@ -308,12 +340,18 @@ function fetchTideData2() {
             "Miami": "8723170",
              };
 
-            const station = stationMap[selectedLocation];   //location from location1
-            const baseUrl = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter';
+            const station = stationMap[selectedLocation];   //location id from location string
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+            const beginDateStr = formatDateToNOAA(startDate);
+            const endDateStr = formatDateToNOAA(endDate);
 
-            // API URLs for high/low and hourly data with date=today
-            const hiloUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=hilo&units=metric&time_zone=lst_ldt&format=json`;
-            const hourlyUrl = `${baseUrl}?date=today&station=${station}&product=predictions&datum=MLLW&interval=h&units=metric&time_zone=lst_ldt&format=json`;
+            const baseUrl = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter';
+            const hiloUrl = `${baseUrl}?begin_date=${beginDateStr}&end_date=${endDateStr}&station=${station}&product=predictions&datum=MLLW&interval=hilo&units=metric&time_zone=lst_ldt&format=json`;
+            const hourlyUrl = `${baseUrl}?begin_date=${beginDateStr}&end_date=${endDateStr}&station=${station}&product=predictions&datum=MLLW&interval=h&units=metric&time_zone=lst_ldt&format=json`;
+
+            // alert(hiloUrl);
+            // alert(hourlyUrl);
 
             // Clear previous data
             document.getElementById('tide-table-body').innerHTML = '';
@@ -321,18 +359,6 @@ function fetchTideData2() {
                 chartInstance.destroy();
             }
             document.getElementById('error-message').style.display = 'none';
-
-            // Fetch high/low tide data for table
-            fetch(hiloUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        showError(data.error.message);
-                        return;
-                    }
-                    populateTable(data.predictions);
-                })
-                .catch(error => showError('Error fetching high/low tide data: ' + error.message));
 
             // Fetch hourly tide data for graph
             fetch(hourlyUrl)
@@ -345,9 +371,19 @@ function fetchTideData2() {
                     drawChart(data.predictions);
                 })
                 .catch(error => showError('Error fetching hourly tide data: ' + error.message));
+
+            // Fetch high/low tide data for table
+            fetch(hiloUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        showError(data.error.message);
+                        return;
+                    }
+                    populateTable(data.predictions);
+                })
+                .catch(error => showError('Error fetching high/low tide data: ' + error.message));
         }
-
-
 
         function populateTable(predictions) {
             const tbody = document.getElementById('tide-table-body');
