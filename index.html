@@ -400,7 +400,14 @@
 
         function drawChart(predictions) {
             const ctx = document.getElementById('tide-chart').getContext('2d');
-            const labels = predictions.map(p => p.t.split(' ')[1]); // Extract time (HH:MM)
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+            const diffDays = (endDate - startDate) / (1000 * 60 * 60 * 24); // Difference in days
+
+            const labels = predictions.map(p => {
+                    const fullDate = new Date(p.t);
+                    return diffDays <= 2 ? p.t.split(' ')[1] : fullDate.toISOString().split('T')[0]; // HH:MM for 2 day, yyyy-MM-dd for >1 day
+                      });
             const data = predictions.map(p => parseFloat(p.v));
 
             chartInstance = new Chart(ctx, {
