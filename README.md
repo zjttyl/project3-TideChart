@@ -75,11 +75,6 @@ The application is browser-based and runs in Google Chrome without additional so
   - Use the `BugBash` label.
   - Include steps to reproduce, expected behavior, and actual behavior.
 
-## Known Issues
-- **P2: No offline fallback**: Application does not display cached data during API downtime. - Reason: limited time and complexity of implementing offline storage.
-- **P2: Date picker validation styling**: Invalid date range (end date before start) shows alert but lacks visual feedback. 
-- **P2: Tide date range**: Data gathered from more than 10 years ago or predicted for more than 10 years in the future will not display. (This counts as an invalid date range, and the data is not gatherable from the API.)
-
 ## Version Control
 - **Branch**: `v1.1`
 - **Tag**: `v1.1-bugbash`.

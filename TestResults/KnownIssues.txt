@@ -1,0 +1,14 @@
+KKNOWN ISSUES
+
+- NOAA API is overloaded when graph is created simultaneously with 3-4+ devices. Slows down graph creation significantly.
+
+- Users are able to select non-viable dates from the drop down menu. i.e. dates like 1563.
+
+- Grammar/spelling issues
+
+- No offline fallback: Application does not display cached data during API downtime.
+-- Reason: limited time and complexity of implementing offline storage.
+
+- Date picker validation styling: Invalid date range (end date before start) shows alert but lacks visual feedback. 
+
+- Tide date range: Data gathered from more than 10 years ago or predicted for more than 10 years in the future will not display. (This counts as an invalid date range, and the data is not gatherable from the API.)
