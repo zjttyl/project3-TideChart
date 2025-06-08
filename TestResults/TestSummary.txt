@@ -1,0 +1,25 @@
+List of types:
+Unit testing, System testing, User Acceptance Testing
+
+Testing result:
+- Unit testing(6/1/2025)
+      -target function: function fetchTides()
+       Result: This function accurately retrieves the specified information and pinpoints the required tidal data using the internal database.
+
+      -target fucntion: drawChart(predictions)
+       Result: This function accurately charts the retrieved tidal information.
+
+-System testing(6/3/2025)
+      - Includes functional testing, performance testing, user UI testing, and exception handling tests
+        Result:
+           - Functional testing: The table making, chart drawing, data retrieval, calendar, and area selection functions are all operating normally.
+           - Performance testing: When more than 30 users access the site simultaneously, it fails to function properly.
+           - UI testing: clean, and convenient enough
+           - exception handling testing: site can mostlt handles all exception
+
+-User Acceptance Testing(6/3/2025 ~ 6/5/2025)
+      - We did this testing during class, and got some feed back from classmate and professor. Ensure that the system meets the user requirements
+        Result: 
+           - User acceptability close to 95%
+           - Some user give a feedback said the chart looks fussy if the data range is soo big
+           - Some user report the text on this website has grammar problems    
