@@ -33,5 +33,5 @@ Types of Testing Performed
 Overall Results
 - Unit Testing: All functions worked as expected (last run: 2025-06-03).
 - Integration Testing: Data displayed correctly in table and graph (last run: 2025-06-05).
-- User Testing: Identified 78 bugs during BugBash, with 1 critical issue (#26) fixed (last run: 2025-06-05).
+- User Testing: Identified 16 (4-5 unique and valid) bugs during BugBash, with 1 critical issue (#26) fixed (last run: 2025-06-05).
 - Regression Testing: Confirmed Bug #26 fix and no new issues (last run: 2025-06-08).
