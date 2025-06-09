@@ -1,0 +1,16 @@
+PASS  __tests__/script.test.js
+Tide Chart Unit Tests
+  parseTideData
+    ✓ parses valid API response correctly (2 ms)
+    ✓ handles empty API response (1 ms)
+    ✓ handles malformed API response (1 ms)
+  updateTideTable
+    ✓ updates table with tide data (3 ms)
+    ✓ clears table before updating (2 ms)
+  displayError
+    ✓ displays error message (1 ms)
+  validateDates
+    ✓ returns true for valid date range (1 ms)
+    ✓ returns false for invalid date range (1 ms)
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total

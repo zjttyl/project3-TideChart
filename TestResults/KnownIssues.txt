@@ -4,8 +4,6 @@ KKNOWN ISSUES
 
 - Users are able to select non-viable dates from the drop down menu. i.e. dates like 1563.
 
-- Grammar/spelling issues
-
 - No offline fallback: Application does not display cached data during API downtime.
 -- Reason: limited time and complexity of implementing offline storage.
 
