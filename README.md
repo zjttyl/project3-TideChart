@@ -9,12 +9,13 @@ The GYYKS Tide Chart is a web-based application that provides tide predictions f
 - **GitHub Release**: [v1.3.0](https://github.com/zjttyl/project3-TideChart/releases/tag/v1.3.0)
 - **Purpose**: GYYKS final release for CSS 360 project-3.
 
-## Features
+## Functionality list
 - **Default Tide Display**: Shows today's tide predictions of Seattle for initial view of the site.
 - **Tide Data Display**: Shows tide histories and predictions (time, height in feet, high/low type) for a selected date range and location in a table and Chart.js graph.
 - **Location Selection**: Supports six locations via dropdown: Seattle, Los Angeles, Anchorage, New York, Miami, and Bremerton.
 - **Custom Date Selection**: Includes start/end date pickers (defaulting to today, June 2, 2025) for single-day or multi-day tide data.
 - **Preset Buttons**: Quick selection for Today, Past Week, Next Week, Past Month, and Next Month date ranges.
+- **UI**: Clean and minimalistic UI design
 - **Error Handling**: Displays an alert if the NOAA API fails to load data.
 - **Performance**: Loads in under 2 seconds and supports up to 100 concurrent users.
 - **Recent Fixes**: 
