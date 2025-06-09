@@ -35,8 +35,7 @@ The application is browser-based and runs in Google Chrome without additional so
      Or download the zip from the [GitHub release page](https://github.com/zjttyl/project3-TideChart/releases/tag/v1.1-bugbash).
    - **Verify Directory Structure**:
      Ensure the following files are present:
-```
-     .
+     ```
      ├── docs
      │   └── git-guide.md
      ├── image
@@ -50,7 +49,7 @@ The application is browser-based and runs in Google Chrome without additional so
          ├── TestSummary.txt
          ├── UnitTestResults_jest.txt
          └── UserTests.txt
-```
+     ```
    - **Start a Local Server** (recommended for local testing):
      ```bash
      python -m http.server
