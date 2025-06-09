@@ -1,0 +1,14 @@
+## User Testing Notes
+- **Alpha Test (2025-05-25)**:
+  - **Participants:** Friends and relatives (oral feed back)
+  - **Key Feedback**: UI layout
+  - **Critical Issue**: N/A
+  - **Other Issue**: Suggest to have preset date range set
+- **BugBash Event (2025-06-05)**:
+  - **Participants**: Class members (16 unique bugs reported).
+  - **Key Feedback**: Users appreciated the location dropdown and date presets but noted mobile display issues and graph label problems.
+  - **Critical Issue**: Bug #26 - X-axis labels showed "00:00" for monthly data (fixed in v1.3 with 2-day threshold).
+  - **Other Issues**: Mobile scaling and API rate limit errors reported.
+- **Team Review (2025-06-07)**:
+  - **Feedback**: Team tested post-fix; confirmed graph labels work for all ranges.
+  - **Suggestions**: Add a mobile-friendly layout in future iterations.

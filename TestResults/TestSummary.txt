@@ -1,5 +1,5 @@
 List of types:
-Unit testing, System testing, User Acceptance Testing
+Unit testing, Integration/System testing, User Acceptance Testing, Regrssion Testing
 
 Testing result:
 - Unit testing(6/1/2025)
@@ -22,4 +22,16 @@ Testing result:
         Result: 
            - User acceptability close to 95%
            - Some user give a feedback said the chart looks fussy if the data range is soo big
-           - Some user report the text on this website has grammar problems    
+           - Some user report the text on this website has grammar problems
+
+Types of Testing Performed
+1. Unit Testing: Tested individual functions (e.g., `drawChart`, `setDateRange`) manually.
+2. Integration Testing: Verified data flow from NOAA API to table and graph.
+3. User Testing: Conducted by team members and BugBash participants.
+4. Regression Testing: Re-tested after Bug #26 fix.
+
+Overall Results
+- Unit Testing: All functions worked as expected (last run: 2025-06-03).
+- Integration Testing: Data displayed correctly in table and graph (last run: 2025-06-05).
+- User Testing: Identified 78 bugs during BugBash, with 1 critical issue (#26) fixed (last run: 2025-06-05).
+- Regression Testing: Confirmed Bug #26 fix and no new issues (last run: 2025-06-08).

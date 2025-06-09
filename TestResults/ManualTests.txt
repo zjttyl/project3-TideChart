@@ -1,0 +1,23 @@
+# ManualTests.txt
+
+## Manual Tests Performed
+- **Test 1: Date Picker **
+  - **Steps**: Select "Today" (June 3, 2025), click "Get Tides."
+  - **Expected**: Table and graph show tide data for June 3, 2025, with x-axis labels as "00:00," "06:00," etc.
+  - **Actual**: Data displayed correctly, x-axis shows "00:00" to "23:00."
+  - **Date Run**: 2025-06-03
+- **Test 2: Date Picker - Past Week**
+  - **Steps**: Select "Past Week" (June 1, 2025 - June 8, 2025), click "Get Tides."
+  - **Expected**: Table and graph show data for the week, x-axis labels as "00:00," "06:00," etc.
+  - **Actual**: Data displayed, x-axis shows hourly labels.
+  - **Date Run**: 2025-06-04
+- **Test 3: Date Picker - Next Month**
+  - **Steps**: Select "Next Month" (June 5, 2025 - July 5, 2025), click "Get Tides."
+  - **Expected**: Table and graph show data, x-axis labels as "2025-06-05," "2025-06-06," etc.
+  - **Actual**: Data displayed, x-axis shows daily labels (Bug #26 fixed).
+  - **Date Run**: 2025-06-03
+- **Test 4: Location Change**
+  - **Steps**: Change location from Seattle to Miami, click "Get Tides."
+  - **Expected**: Table and graph update with Miami data.
+  - **Actual**: Data updated correctly.
+  - **Date Run**: 2025-06-03
