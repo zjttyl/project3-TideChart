@@ -9,4 +9,9 @@ KKNOWN ISSUES
 
 - Date picker validation styling: Invalid date range (end date before start) shows alert but lacks visual feedback. 
 
-- Tide date range: Data gathered from more than 10 years ago or predicted for more than 10 years in the future will not display. (This counts as an invalid date range, and the data is not gatherable from the API.)
+- Tide date range: Data too far in the future or in the past (roughly 2101 and beyond, and 1700 and before), will not display. 
+-- Reason: This is a limitation of the NOAA API, as it does not predict or store anything beyond that.
+
+- Mobile date picking bug: On the mobile version, selecting a date will give you the date you picked but 2 days after.
+
+- Shrinking the website and then resizing it back to full size will keep the graph as the size it was when it was smaller.
