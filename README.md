@@ -79,13 +79,13 @@ The application is browser-based and runs in Google Chrome without additional so
 
 ### Unit Automatic Testing with Jest
 The Tide Chart application employs Jest for unit testing to ensure the reliability of individual components in script.js. The unit tests, focus on key functions: parseTideData, updateTideTable, displayError, and validateDates. 
-
+Please refer to TestResults/UnitTestResults_jest.txt
 
 ### Manual Test
-Manual test reault please refer TestResults/ManualTests.txt
+Manual test reault please refer to TestResults/ManualTests.txt
 
 ### User Test
-User test reault please refer TestResults/UserTests.txt
+User test reault please refer to TestResults/UserTests.txt
 
 ## Known Issues
 - **P2: No offline fallback**: Application does not display cached data during API downtime. - Reason: limited time and complexity of implementing offline storage.
@@ -93,6 +93,7 @@ User test reault please refer TestResults/UserTests.txt
 - **P2: Tide date range**: Data gathered from more than 10 years ago or predicted for more than 10 years in the future will not display. (This counts as an invalid date range, and the data is not gatherable from the API.)
 - **P2: Overloading API**: NOAA API is overloaded when graph is created simultaneously with 20+ devices. Slows down graph creation significantly.
 - **P2: Selectable tide data range**: Users are able to select non-viable dates from the drop down menu. i.e. dates like 1563.
+please refer to TestResults/KnowIssues.txt
 
 ## Version Control
 - **Branch**: `v1.3.0`

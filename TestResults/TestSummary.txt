@@ -1,5 +1,5 @@
 List of types:
-Unit testing, System testing, User Acceptance Testing
+Unit testing, Integration/System testing, User Acceptance Testing, Regrssion Testing
 
 Testing result:
 - Unit testing(6/1/2025)
