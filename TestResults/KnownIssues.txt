@@ -1,8 +1,8 @@
 KKNOWN ISSUES
 
-- NOAA API is overloaded when graph is created simultaneously with 3-4+ devices. Slows down graph creation significantly.
+- Traffic Load: NOAA API is overloaded when graph is created simultaneously with 3-4+ devices. Slows down graph creation significantly.
 
-- Users are able to select non-viable dates from the drop down menu. i.e. dates like 1563.
+- Invalid dates: Users are able to select non-viable dates from the drop down menu. i.e. dates like 1563.
 
 - No offline fallback: Application does not display cached data during API downtime.
 -- Reason: limited time and complexity of implementing offline storage.
@@ -14,4 +14,4 @@ KKNOWN ISSUES
 
 - Mobile date picking bug: On the mobile version, selecting a date will give you the date you picked but 2 days after.
 
-- Shrinking the website and then resizing it back to full size will keep the graph as the size it was when it was smaller.
+- Graph rescaling issue: Shrinking the website and then resizing it back to full size will keep the graph as the size it was when it was smaller.
