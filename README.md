@@ -35,7 +35,7 @@ The application is browser-based and runs in Google Chrome without additional so
      git clone https://github.com/zjttyl/project3-TideChart.git
      cd project3-TideChart
      ```
-     Or download the zip from the [GitHub release page](https://github.com/zjttyl/project3-TideChart/releases/tag/v1.1-bugbash).
+     Or download the zip from the [GitHub release page](https://github.com/zjttyl/project3-TideChart/releases/tag/v1.3.0).
    - **Verify Directory Structure**:
      Ensure the following files are present:
      ```
