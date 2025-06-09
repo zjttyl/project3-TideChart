@@ -50,7 +50,7 @@ The application is browser-based and runs in Google Chrome without additional so
          ├── TestSummary.txt
          ├── UnitTestResults_jest.txt
          └── UserTests.txt
-     ```
+```
    - **Start a Local Server** (recommended for local testing):
      ```bash
      python -m http.server
