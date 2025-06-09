@@ -17,7 +17,9 @@ The GYYKS Tide Chart is a web-based application that provides tide predictions f
 - **Preset Buttons**: Quick selection for Today, Past Week, Next Week, Past Month, and Next Month date ranges.
 - **Error Handling**: Displays an alert if the NOAA API fails to load data.
 - **Performance**: Loads in under 2 seconds and supports up to 100 concurrent users.
-- **Recent Fixes**: Corrected table and chart labels from "Height (m)" to "Height (feet)" to match NOAA API units=english.
+- **Recent Fixes**: 
+  - Corrected table and chart labels from "Height (m)" to "Height (feet)" to match NOAA API units=english.
+  - Bug #26 - X-axis labels showed "00:00" for monthly data (fixed in v1.3 with 2-day threshold).
 
 ## How to Run
 The application is browser-based and runs in Google Chrome without additional software.
