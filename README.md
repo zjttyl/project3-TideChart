@@ -93,6 +93,7 @@ User test reault please refer to TestResults/UserTests.txt
 - **P2: Tide date range**: Data gathered from more than 10 years ago or predicted for more than 10 years in the future will not display. (This counts as an invalid date range, and the data is not gatherable from the API.)
 - **P2: Overloading API**: NOAA API is overloaded when graph is created simultaneously with 20+ devices. Slows down graph creation significantly.
 - **P2: Selectable tide data range**: Users are able to select non-viable dates from the drop down menu. i.e. dates like 1563.
+
 please refer to TestResults/KnowIssues.txt
 
 ## Version Control
